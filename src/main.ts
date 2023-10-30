@@ -5,12 +5,17 @@ import {AppComponent} from './app/app.component';
 import {appRoutes} from './app/app.routes';
 import {provideStoreDevtools} from '@ngrx/store-devtools';
 import {isDevMode} from '@angular/core';
-import {authFeatureKey, authReducer} from './app/auth/store/auth.reducer';
+import {authFeatureKey, authReducer} from './app/core/auth/store/auth.reducer';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {provideEffects} from '@ngrx/effects';
-import * as authEffects from './app/auth/store/auth.effects';
+import * as authEffects from './app/core/auth/store/auth.effects';
 import {provideRouterStore, routerReducer} from '@ngrx/router-store';
 import {authInterceptor} from './app/shared/services/auth-interceptor';
+import * as getFeedEffect from './app/shared/components/feed/store/feed.effects';
+import {
+    feedFeatureKey,
+    feedReducer,
+} from './app/shared/components/feed/store/feed.reducer';
 
 bootstrapApplication(AppComponent, {
     providers: [
@@ -21,6 +26,7 @@ bootstrapApplication(AppComponent, {
             router: routerReducer,
         }),
         provideEffects(authEffects),
+        provideEffects(getFeedEffect),
         provideStoreDevtools({
             maxAge: 25, // Retains last 25 states
             logOnly: !isDevMode(), // Restrict extension to log-only mode
@@ -30,5 +36,6 @@ bootstrapApplication(AppComponent, {
             connectOutsideZone: true, // If set to true, the connection is established outside the Angular zone for better performance
         }),
         provideState(authFeatureKey, authReducer),
+        provideState(feedFeatureKey, feedReducer),
     ],
 });

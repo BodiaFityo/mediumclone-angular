@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {AuthFacade} from './auth/auth.facade';
+import {AuthFacade} from './core/auth/auth.facade';
 import {NavBarComponent} from './shared/components/nav-bar/nav-bar.component';
 
 @Component({

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterLink} from '@angular/router';
-import {AuthFacade} from 'src/app/auth/auth.facade';
+import {AuthFacade} from 'src/app/core/auth/auth.facade';
 import {combineLatest} from 'rxjs';
 
 @Component({

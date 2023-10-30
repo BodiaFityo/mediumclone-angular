@@ -60,7 +60,7 @@ const authFeature = createFeature({
             user: null,
             errors: null,
         })),
-        on(routerNavigationAction, (state) => ({...state, errors: null}))
+        on(routerNavigationAction, () => initialState)
     ),
 });
 

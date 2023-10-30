@@ -9,7 +9,7 @@
         </p>
 
         <ul *ngFor="let error of data.backendErrors" class="error-messages" >
-         <app-error-messages [errors]="error"></app-error-messages>
+         <mc-error-messages [errors]="error"></mc-error-messages>
         </ul>
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
