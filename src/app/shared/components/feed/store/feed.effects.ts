@@ -2,7 +2,7 @@ import {inject} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, map, of, switchMap} from 'rxjs';
 import {GetFeedResponse} from '../models/get-feed-respons.model';
-import {FeedService} from '../services/feed-service.service';
+import {FeedService} from '../services/feed.service';
 import {feedActions} from './feed.actions';
 
 export const getFeedEffect = createEffect(
