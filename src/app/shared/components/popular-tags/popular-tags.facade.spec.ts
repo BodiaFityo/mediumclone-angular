@@ -1,13 +1,13 @@
 import {TestBed} from '@angular/core/testing';
 
-import {FeedService} from './feed-service.service';
+import {PopularTagsFacade} from './popular-tags.facade';
 
-describe('FeedService', () => {
-    let service: FeedService;
+describe('PopularTagsService', () => {
+    let service: PopularTagsFacade;
 
     beforeEach(() => {
         TestBed.configureTestingModule({});
-        service = TestBed.inject(FeedService);
+        service = TestBed.inject(PopularTagsFacade);
     });
 
     it('should be created', () => {
