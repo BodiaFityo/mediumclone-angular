@@ -33,11 +33,13 @@ const authFeature = createFeature({
         on(authActions.loginUser, (state) => ({
             ...state,
             isSubmitting: true,
+            isLoading: true,
             errors: null,
         })),
         on(authActions.loginUserSuccess, (state, user) => ({
             ...state,
             user,
+            isLoading: false,
             isSubmitting: false,
         })),
         on(authActions.loginUserFailure, (state, {errors}) => ({
@@ -60,7 +62,12 @@ const authFeature = createFeature({
             user: null,
             errors: null,
         })),
-        on(routerNavigationAction, () => initialState)
+        on(routerNavigationAction, (state) => ({
+            ...state,
+            isSubmitting: false,
+            isLoading: true,
+            errors: null,
+        }))
     ),
 });
 
