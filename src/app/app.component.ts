@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {AuthFacade} from './core/auth/auth.facade';
+import {MainLayoutComponent} from './core/main-layout/main-layout.component';
 import {NavBarComponent} from './shared/components/nav-bar/nav-bar.component';
 
 @Component({
@@ -8,12 +8,8 @@ import {NavBarComponent} from './shared/components/nav-bar/nav-bar.component';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
-    imports: [RouterOutlet, NavBarComponent],
+    imports: [RouterOutlet, NavBarComponent, MainLayoutComponent],
 })
-export class AppComponent implements OnInit {
-    constructor(private authFacade: AuthFacade) {}
-
-    ngOnInit(): void {
-        this.authFacade.getCurrentUser();
-    }
+export class AppComponent {
+    constructor() {}
 }

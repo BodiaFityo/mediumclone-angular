@@ -8,7 +8,6 @@ export const appRoutes: Route[] = [
                 (m) => m.registerRoutes
             ),
     },
-
     {
         path: 'login',
         loadChildren: () =>
@@ -17,8 +16,15 @@ export const appRoutes: Route[] = [
     {
         path: '',
         loadChildren: () =>
-            import('src/app/features/global-feed/global-feed.routes').then(
-                (m) => m.globalFeed
-            ),
+            import(
+                'src/app/features/components/global-feed/global-feed.routes'
+            ).then((m) => m.globalFeed),
+    },
+    {
+        path: 'feed',
+        loadChildren: () =>
+            import(
+                'src/app/features/components/your-feed/your-feed.routes'
+            ).then((m) => m.yourFeed),
     },
 ];
