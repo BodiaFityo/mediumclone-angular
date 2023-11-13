@@ -27,4 +27,12 @@ export const appRoutes: Route[] = [
                 'src/app/features/components/your-feed/your-feed.routes'
             ).then((m) => m.yourFeed),
     },
+
+    {
+        path: 'tags/:slug',
+        loadChildren: () =>
+            import('src/app/features/components/tag-feed/tag-feed.routes').then(
+                (m) => m.tagFeedRoute
+            ),
+    },
 ];
