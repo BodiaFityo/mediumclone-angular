@@ -13,7 +13,7 @@ import {ErrorMessagesComponent} from '../error-messages/error-messages.component
 import {LoaderComponent} from '../loader/loader.component';
 import {PaginationComponent} from '../pagination/pagination.component';
 import queryString from 'query-string';
-import {FeedTagListComponent} from './feed-tag-list/feed-tag-list.component';
+import {FeedTagListComponent} from '../feed-tag-list/feed-tag-list.component';
 
 @Component({
     selector: 'mc-feed',

@@ -1,4 +1,3 @@
-import {state} from '@angular/animations';
 import {routerNavigationAction} from '@ngrx/router-store';
 import {createReducer, createFeature, on} from '@ngrx/store';
 import {AuthStateInterface} from '../models/auth-state.model';

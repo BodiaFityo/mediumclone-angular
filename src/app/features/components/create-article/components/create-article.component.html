@@ -1,0 +1,8 @@
+<ng-container *ngIf="data$ | async as data">
+    <mc-article-form
+        [initFormValues]="initFormValues"
+        [isSubmitting]="data.isSubmitting"
+        [backendErrors]="data.backendErrors"
+        (articleSubmit)="onCreateArticleSubmit($event)"
+    ></mc-article-form>
+</ng-container>

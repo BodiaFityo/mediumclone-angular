@@ -103,25 +103,3 @@ export const redirectAfterRegistrationEffect = createEffect(
 
     {functional: true, dispatch: false}
 );
-// @Injectable()
-// export class LogEffects {
-//     constructor(
-//         private actions$: Actions,
-//         private authService: AuthService
-//     ) {}
-
-//     registerUser$ = createEffect(
-//         () =>
-//             this.actions$.pipe(
-//                 ofType(authActions.registerUser),
-//                 switchMap(({user}) =>
-//                     this.authService
-//                         .register(user)
-//                         .pipe(
-//                             map((user) => authActions.registerUserSuccess(user))
-//                         )
-//                 )
-//             ),
-//         {dispatch: false}
-//     );
-// }

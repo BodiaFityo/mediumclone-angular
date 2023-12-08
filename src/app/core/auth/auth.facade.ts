@@ -8,6 +8,7 @@ import {
     selectIsSubmitting,
     selectErrors,
     selectUser,
+    selectIsLoading,
 } from './store/auth.reducer';
 
 @Injectable({
@@ -17,6 +18,7 @@ export class AuthFacade {
     readonly isSubmitting$ = this.store.select(selectIsSubmitting);
     readonly isBackendErrors$ = this.store.select(selectErrors);
     readonly currentUser$ = this.store.select(selectUser);
+    readonly isLoading$ = this.store.select(selectIsLoading);
 
     constructor(private store: Store<{auth: AuthStateInterface}>) {}
 

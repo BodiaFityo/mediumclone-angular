@@ -4,6 +4,7 @@ import {BannerComponent} from 'src/app/shared/components/banner/banner.component
 import {PopularTagsComponent} from 'src/app/shared/components/popular-tags/popular-tags.component';
 import {RouterOutlet} from '@angular/router';
 import {AuthFacade} from '../auth/auth.facade';
+import {combineLatest} from 'rxjs';
 
 @Component({
     selector: 'mc-main-layout',
@@ -18,6 +19,11 @@ import {AuthFacade} from '../auth/auth.facade';
     styleUrls: ['./main-layout.component.scss'],
 })
 export class MainLayoutComponent implements OnInit {
+    data$ = combineLatest({
+        currentUser: this.authFacade.currentUser$,
+        isLoading: this.authFacade.isLoading$,
+    });
+
     constructor(private authFacade: AuthFacade) {}
 
     ngOnInit(): void {

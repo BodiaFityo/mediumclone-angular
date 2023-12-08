@@ -1,7 +1,7 @@
 import {Route} from '@angular/router';
 import {TagFeedComponent} from './components/tag-feed.component';
 
-export const tagFeedRoute: Route[] = [
+export const tagFeed: Route[] = [
     {
         path: '',
         component: TagFeedComponent,
