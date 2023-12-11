@@ -1,4 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {
+    Component,
+    Input,
+    OnChanges,
+    OnInit,
+    SimpleChanges,
+} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FeedFacade} from './feed.facade';
 import {combineLatest} from 'rxjs';
@@ -7,7 +13,7 @@ import {ErrorMessagesComponent} from '../error-messages/error-messages.component
 import {LoaderComponent} from '../loader/loader.component';
 import {PaginationComponent} from '../pagination/pagination.component';
 import queryString from 'query-string';
-import {FeedTagListComponent} from './feed-tag-list/feed-tag-list.component';
+import {FeedTagListComponent} from '../feed-tag-list/feed-tag-list.component';
 
 @Component({
     selector: 'mc-feed',
@@ -24,7 +30,7 @@ import {FeedTagListComponent} from './feed-tag-list/feed-tag-list.component';
     templateUrl: './feed.component.html',
     styleUrls: ['./feed.component.scss'],
 })
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit, OnChanges {
     @Input() apiUrl = '';
 
     baseUrl = this.router.url.split('?')[0];
@@ -42,11 +48,20 @@ export class FeedComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute
     ) {}
+
     ngOnInit(): void {
         this.route.queryParams.subscribe((params) => {
             this.currentPage = Number(params['page'] || '1');
             this.fetchFeed();
         });
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        const url = changes['apiUrl'];
+        const isApiurlChange = url.currentValue != url.previousValue;
+        if (isApiurlChange) {
+            this.fetchFeed();
+        }
     }
 
     private fetchFeed() {

@@ -1,0 +1,11 @@
+<ng-container *ngIf="data$ | async as data">
+    <mc-loader *ngIf="data.isLoading"></mc-loader>
+    <ng-container *ngIf="data.loadArticle">
+        <mc-article-form
+            [initFormValues]="data.loadArticle"
+            [isSubmitting]="data.isSubmitting"
+            [backendErrors]="data.backendError"
+            (articleSubmit)="onEditArticleSubmit($event)"
+        ></mc-article-form>
+    </ng-container>
+</ng-container>

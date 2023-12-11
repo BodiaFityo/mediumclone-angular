@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
+import {UpdateUserRequest} from 'src/app/shared/models/update-user-request.model';
 import {AuthStateInterface} from './models/auth-state.model';
 import {LoginUserReques} from './models/login-request.model';
 import {RegisterUserRequest} from './models/register-request.model';
@@ -8,6 +9,7 @@ import {
     selectIsSubmitting,
     selectErrors,
     selectUser,
+    selectIsLoading,
 } from './store/auth.reducer';
 
 @Injectable({
@@ -17,6 +19,7 @@ export class AuthFacade {
     readonly isSubmitting$ = this.store.select(selectIsSubmitting);
     readonly isBackendErrors$ = this.store.select(selectErrors);
     readonly currentUser$ = this.store.select(selectUser);
+    readonly isLoading$ = this.store.select(selectIsLoading);
 
     constructor(private store: Store<{auth: AuthStateInterface}>) {}
 
@@ -30,5 +33,13 @@ export class AuthFacade {
 
     getCurrentUser(): void {
         this.store.dispatch(authActions.getCurrentUser());
+    }
+
+    updateUser(request: UpdateUserRequest): void {
+        this.store.dispatch(authActions.updateUser({user: request}));
+    }
+
+    logOut(): void {
+        this.store.dispatch(authActions.logOut());
     }
 }

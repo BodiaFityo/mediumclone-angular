@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {map, Observable} from 'rxjs';
+import {UpdateUserRequest} from 'src/app/shared/models/update-user-request.model';
 import {User} from 'src/app/shared/models/user.model';
 import {environment} from 'src/environments/environment.development';
 import {AuthUserResponse} from '../models/auth-response.model';
@@ -32,6 +33,13 @@ export class AuthService {
         const url = environment.apiUrl + '/user';
         return this.http
             .get<AuthUserResponse>(url)
+            .pipe(map((res) => res.user));
+    }
+
+    updateUser(user: UpdateUserRequest): Observable<User> {
+        const url = environment.apiUrl + '/user';
+        return this.http
+            .put<AuthUserResponse>(url, user)
             .pipe(map((res) => res.user));
     }
 }

@@ -1,10 +1,9 @@
-<div class="home-page">
-    <mc-banner></mc-banner>
+<div class="home-page" *ngIf="data$ | async as data">
+    <mc-banner *ngIf="!data.currentUser"></mc-banner>
     <div class="container page">
         <div class="row">
             <div class="col-md-9">
-                FEED Toggler
-                <mc-feed [apiUrl]="apiUrl"></mc-feed>
+                <router-outlet></router-outlet>
             </div>
             <div class="col-md-3">
                 <mc-popular-tags></mc-popular-tags>

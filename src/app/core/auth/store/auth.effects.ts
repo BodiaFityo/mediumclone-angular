@@ -34,6 +34,17 @@ export const registerUserEffect = createEffect(
     {functional: true}
 );
 
+export const redirectAfterRegistrationEffect = createEffect(
+    (actions$ = inject(Actions), router = inject(Router)) => {
+        return actions$.pipe(
+            ofType(authActions.registerUserSuccess),
+            tap(() => router.navigateByUrl('/'))
+        );
+    },
+
+    {functional: true, dispatch: false}
+);
+
 export const loginUserEffect = createEffect(
     (
         actions$ = inject(Actions),
@@ -56,6 +67,16 @@ export const loginUserEffect = createEffect(
         );
     },
     {functional: true}
+);
+
+export const redirecAfterLoginEffect = createEffect(
+    (actions$ = inject(Actions), router = inject(Router)) => {
+        return actions$.pipe(
+            ofType(authActions.loginUserSuccess),
+            tap(() => router.navigateByUrl('/'))
+        );
+    },
+    {functional: true, dispatch: false}
 );
 
 export const getCurrentUserEffect = createEffect(
@@ -83,45 +104,41 @@ export const getCurrentUserEffect = createEffect(
     {functional: true}
 );
 
-export const redirecAfterLoginEffect = createEffect(
-    (actions$ = inject(Actions), router = inject(Router)) => {
+export const updateUser = createEffect(
+    (actions$ = inject(Actions), authService = inject(AuthService)) => {
         return actions$.pipe(
-            ofType(authActions.loginUserSuccess),
-            tap(() => router.navigateByUrl('/'))
+            ofType(authActions.updateUser),
+            switchMap(({user}) => {
+                return authService.updateUser(user).pipe(
+                    map((user) => authActions.updateUserSuccess(user)),
+                    catchError((error: HttpErrorResponse) =>
+                        of(authActions.updateUserFailure({error: error.error}))
+                    )
+                );
+            })
         );
     },
-    {functional: true, dispatch: false}
+    {
+        functional: true,
+    }
 );
 
-export const redirectAfterRegistrationEffect = createEffect(
-    (actions$ = inject(Actions), router = inject(Router)) => {
+export const logOut = createEffect(
+    (
+        actions$ = inject(Actions),
+        tokenService = inject(TokenService),
+        router = inject(Router)
+    ) => {
         return actions$.pipe(
-            ofType(authActions.registerUserSuccess),
-            tap(() => router.navigateByUrl('/'))
+            ofType(authActions.logOut),
+            tap(() => {
+                tokenService.set(null);
+                router.navigateByUrl('/');
+            })
         );
     },
-
-    {functional: true, dispatch: false}
+    {
+        functional: true,
+        dispatch: false,
+    }
 );
-// @Injectable()
-// export class LogEffects {
-//     constructor(
-//         private actions$: Actions,
-//         private authService: AuthService
-//     ) {}
-
-//     registerUser$ = createEffect(
-//         () =>
-//             this.actions$.pipe(
-//                 ofType(authActions.registerUser),
-//                 switchMap(({user}) =>
-//                     this.authService
-//                         .register(user)
-//                         .pipe(
-//                             map((user) => authActions.registerUserSuccess(user))
-//                         )
-//                 )
-//             ),
-//         {dispatch: false}
-//     );
-// }
