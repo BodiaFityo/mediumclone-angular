@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
+import {UpdateUserRequest} from 'src/app/shared/models/update-user-request.model';
 import {AuthStateInterface} from './models/auth-state.model';
 import {LoginUserReques} from './models/login-request.model';
 import {RegisterUserRequest} from './models/register-request.model';
@@ -32,5 +33,13 @@ export class AuthFacade {
 
     getCurrentUser(): void {
         this.store.dispatch(authActions.getCurrentUser());
+    }
+
+    updateUser(request: UpdateUserRequest): void {
+        this.store.dispatch(authActions.updateUser({user: request}));
+    }
+
+    logOut(): void {
+        this.store.dispatch(authActions.logOut());
     }
 }
