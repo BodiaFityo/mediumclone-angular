@@ -14,6 +14,7 @@ import {LoaderComponent} from '../loader/loader.component';
 import {PaginationComponent} from '../pagination/pagination.component';
 import queryString from 'query-string';
 import {FeedTagListComponent} from '../feed-tag-list/feed-tag-list.component';
+import {FavoriteComponent} from '../favorite/components/favorite.component';
 
 @Component({
     selector: 'mc-feed',
@@ -25,6 +26,7 @@ import {FeedTagListComponent} from '../feed-tag-list/feed-tag-list.component';
         LoaderComponent,
         PaginationComponent,
         FeedTagListComponent,
+        FavoriteComponent,
     ],
     providers: [FeedFacade],
     templateUrl: './feed.component.html',

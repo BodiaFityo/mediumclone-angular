@@ -8,6 +8,7 @@ import {isDevMode} from '@angular/core';
 import {authFeatureKey, authReducer} from './app/core/auth/store/auth.reducer';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {provideEffects} from '@ngrx/effects';
+import * as favoriteEffects from './app/shared/components/favorite/store/favorite.effects';
 import * as authEffects from './app/core/auth/store/auth.effects';
 import {provideRouterStore, routerReducer} from '@ngrx/router-store';
 import {authInterceptor} from './app/shared/services/auth-interceptor';
@@ -21,6 +22,7 @@ import {
     popularTagsFeatureKey,
     popularTagsReducer,
 } from './app/shared/components/popular-tags/store/popular-tags.reducer';
+import {FavoriteService} from './app/shared/components/favorite/services/favorite.service';
 
 bootstrapApplication(AppComponent, {
     providers: [
@@ -30,9 +32,12 @@ bootstrapApplication(AppComponent, {
         provideStore({
             router: routerReducer,
         }),
-        provideEffects(authEffects),
-        provideEffects(getFeedEffect),
-        provideEffects(getPopularTagsEffect),
+        provideEffects(
+            authEffects,
+            getFeedEffect,
+            getPopularTagsEffect,
+            favoriteEffects
+        ),
         provideStoreDevtools({
             maxAge: 25, // Retains last 25 states
             logOnly: !isDevMode(), // Restrict extension to log-only mode
@@ -44,5 +49,7 @@ bootstrapApplication(AppComponent, {
         provideState(authFeatureKey, authReducer),
         provideState(feedFeatureKey, feedReducer),
         provideState(popularTagsFeatureKey, popularTagsReducer),
+
+        FavoriteService,
     ],
 });
