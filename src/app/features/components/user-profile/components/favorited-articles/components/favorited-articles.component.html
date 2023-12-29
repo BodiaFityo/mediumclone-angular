@@ -1,0 +1,3 @@
+<ng-container *ngIf="userProfile$ | async as userProfile">
+    <mc-feed [apiUrl]="apiUrl + userProfile.username"></mc-feed>
+</ng-container>

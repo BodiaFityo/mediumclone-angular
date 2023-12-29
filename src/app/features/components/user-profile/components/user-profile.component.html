@@ -1,0 +1,37 @@
+<div class="profile-page" *ngIf="data$ | async as data">
+    <mc-loader *ngIf="data.isLoading"></mc-loader>
+    <ng-container *ngIf="data.userProfile && !data.isLoading">
+        <div class="user-info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-10 offset-md-1">
+                        <img [src]="data.userProfile.image" class="user-img" />
+                        <h4>{{ data.userProfile.username }}</h4>
+                        <p>
+                            {{ data.userProfile.bio }}
+                        </p>
+                        <div>Following: {{ data.userProfile.following }}</div>
+
+                        <a
+                            class="btn btn-sm btn-outline-secondary action-btn"
+                            [routerLink]="['/settings']"
+                        >
+                            <i class="ion-gear-a"></i>Edit Profile Settings</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-10 offset-md-1">
+                    <mc-feed-toggler
+                        [toggleType]="toggleType"
+                        [username]="username"
+                    ></mc-feed-toggler>
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
