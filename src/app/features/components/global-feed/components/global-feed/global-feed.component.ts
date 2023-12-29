@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FeedComponent} from 'src/app/shared/components/feed/feed.component';
-import {FeedTogglerComponent} from 'src/app/shared/components/feed-toggler/feed-toggler.component';
+import {FeedTogglerComponent} from 'src/app/shared/components/feed-toggler/components/feed-toggler.component';
 
 @Component({
     selector: 'mc-global-feed',

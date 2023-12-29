@@ -65,4 +65,11 @@ export const appRoutes: Route[] = [
                 (m) => m.settings
             ),
     },
+    {
+        path: 'profiles/:username',
+        loadChildren: () =>
+            import(
+                'src/app/features/components/user-profile/user-profile.roures'
+            ).then((m) => m.userProfileRoutes),
+    },
 ];
