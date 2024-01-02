@@ -1,5 +1,5 @@
 <div class="home-page" *ngIf="data$ | async as data">
-    <mc-banner *ngIf="!data.currentUser"></mc-banner>
+    <mc-banner *ngIf="data.showBanner"></mc-banner>
     <div class="container page">
         <div class="row">
             <div class="col-md-9">

@@ -13,6 +13,13 @@ export class FavoriteService {
         const url = environment.apiUrl + `/articles/${slug}/favorite`;
         return this.http
             .post<ArticleResponse>(url, {})
-            .pipe(map((res) => res.article));
+            .pipe(map(({article}) => article));
+    }
+
+    unFavorite(slug: string): Observable<Articles> {
+        const url = environment.apiUrl + `/articles/${slug}/favorite`;
+        return this.http
+            .delete<ArticleResponse>(url)
+            .pipe(map(({article}) => article));
     }
 }

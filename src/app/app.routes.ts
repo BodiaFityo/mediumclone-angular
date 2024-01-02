@@ -1,4 +1,5 @@
 import {Route} from '@angular/router';
+import {authenticationGuard} from './shared/services/auth.guard';
 
 export const appRoutes: Route[] = [
     {
@@ -42,6 +43,7 @@ export const appRoutes: Route[] = [
             import(
                 'src/app/features/components/create-article/create-article.routes'
             ).then((m) => m.createArticle),
+        canActivate: [authenticationGuard()],
     },
 
     {
@@ -57,6 +59,7 @@ export const appRoutes: Route[] = [
             import(
                 'src/app/features/components/edit-article/edit-article.routes'
             ).then((m) => m.editArticle),
+        canActivate: [authenticationGuard()],
     },
     {
         path: 'settings',
@@ -64,6 +67,15 @@ export const appRoutes: Route[] = [
             import('src/app/features/components/settings/settings.routes').then(
                 (m) => m.settings
             ),
+        canActivate: [authenticationGuard()],
+    },
+    {
+        path: 'profiles/:username',
+        loadChildren: () =>
+            import(
+                'src/app/features/components/user-profile/user-profile.roures'
+            ).then((m) => m.userProfileRoutes),
+        canActivate: [authenticationGuard()],
     },
     {
         path: 'profiles/:username',

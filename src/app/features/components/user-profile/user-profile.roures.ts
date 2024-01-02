@@ -23,6 +23,11 @@ export const userProfileRoutes: Route[] = [
         ],
         children: [
             {
+                path: '', // Empty path corresponds to /profiles/:username
+                pathMatch: 'full', // Make sure it's a full match
+                redirectTo: 'my-articles', // Redirect to 'my-articles'
+            },
+            {
                 path: 'my-articles',
                 loadChildren: () =>
                     import('./components/my-articles/my-article.routes').then(
