@@ -77,4 +77,11 @@ export const appRoutes: Route[] = [
             ).then((m) => m.userProfileRoutes),
         canActivate: [authenticationGuard()],
     },
+    {
+        path: 'profiles/:username',
+        loadChildren: () =>
+            import(
+                'src/app/features/components/user-profile/user-profile.roures'
+            ).then((m) => m.userProfileRoutes),
+    },
 ];
