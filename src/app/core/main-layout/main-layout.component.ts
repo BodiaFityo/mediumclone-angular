@@ -4,7 +4,7 @@ import {BannerComponent} from 'src/app/shared/components/banner/banner.component
 import {PopularTagsComponent} from 'src/app/shared/components/popular-tags/popular-tags.component';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {AuthFacade} from '../auth/auth.facade';
-import {combineLatest, filter, map, tap} from 'rxjs';
+import {combineLatest, filter, map} from 'rxjs';
 
 @Component({
     selector: 'mc-main-layout',

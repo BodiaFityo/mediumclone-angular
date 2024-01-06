@@ -2,10 +2,14 @@
     <mc-loader *ngIf="data.isLoading"></mc-loader>
     <div class="sidebar" *ngIf="data.tags">
         <p>Popular Tags</p>
-    
-        <div class="tag-list" >
-        <a  *ngFor="let popularTag of data.tags" [routerLink]="['/tags',popularTag]" class="tag-pill tag-default">{{popularTag}}</a>
-        
+
+        <div class="tag-list">
+            <a
+                *ngFor="let popularTag of data.tags"
+                [routerLink]="['/tags', popularTag]"
+                class="tag-pill tag-default"
+                >{{ popularTag }}</a
+            >
         </div>
     </div>
 </ng-container>

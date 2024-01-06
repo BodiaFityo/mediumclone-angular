@@ -1,5 +1,4 @@
 import {Route} from '@angular/router';
-import {provideEffects} from '@ngrx/effects';
 import {provideState} from '@ngrx/store';
 import {SettingsComponent} from './components/settings.component';
 import {SettingsFacade} from './settings.facade';

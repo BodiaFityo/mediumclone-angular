@@ -1,4 +1,4 @@
-import {createActionGroup, emptyProps, props} from '@ngrx/store';
+import {createActionGroup, props} from '@ngrx/store';
 import {ArticleRequest} from 'src/app/shared/models/article-request.model';
 import {Articles} from 'src/app/shared/models/articles.model';
 import {BackEndErrors} from 'src/app/shared/models/back-end-errors.model';

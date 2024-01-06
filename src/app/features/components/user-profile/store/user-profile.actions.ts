@@ -1,4 +1,4 @@
-import {createActionGroup, emptyProps, props} from '@ngrx/store';
+import {createActionGroup, props} from '@ngrx/store';
 import {Profile} from 'src/app/shared/models/profile.model';
 import {UserProfileRequest} from '../models/user-profile-request.model';
 

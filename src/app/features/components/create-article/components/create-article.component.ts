@@ -5,7 +5,6 @@ import {ArticleForm} from 'src/app/shared/components/article-form/models/article
 import {ArticleRequest} from 'src/app/shared/models/article-request.model';
 import {CreateArticleFacade} from '../create-article.facade';
 import {combineLatest, map} from 'rxjs';
-import {BackEndErrors} from 'src/app/shared/models/back-end-errors.model';
 
 @Component({
     selector: 'mc-create-article',

@@ -28,7 +28,7 @@ export class SettingsComponent {
         this.settingsFacade.errors$,
         this.authFacade.currentUser$,
     ]).pipe(
-        filter(([isSubmitting, errors, currentUser]) => Boolean(currentUser)),
+        filter(([, , currentUser]) => Boolean(currentUser)),
         map(([isSubmitting, errors, currentUser]) => {
             this.initForm(currentUser as User);
             this.currentUser = currentUser as User;

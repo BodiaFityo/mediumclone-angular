@@ -5,7 +5,6 @@ import {Injectable} from '@angular/core';
 })
 export class TokenService {
     private key = 'accessToken';
-    constructor() {}
 
     set(token: unknown) {
         try {

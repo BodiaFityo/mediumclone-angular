@@ -9,7 +9,6 @@ import {
     ReactiveFormsModule,
 } from '@angular/forms';
 import {ErrorMessagesComponent} from '../../error-messages/error-messages.component';
-import {BackEndErrors} from 'src/app/shared/models/back-end-errors.model';
 
 @Component({
     selector: 'mc-article-form',

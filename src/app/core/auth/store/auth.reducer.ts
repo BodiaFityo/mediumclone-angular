@@ -72,7 +72,7 @@ const authFeature = createFeature({
             isLoading: false,
             isSubmitting: false,
         })),
-        on(authActions.logOut, (state) => initialState),
+        on(authActions.logOut, () => initialState),
         on(routerNavigationAction, (state) => ({
             ...state,
             isSubmitting: false,

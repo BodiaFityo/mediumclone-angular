@@ -3,7 +3,6 @@ import {createEffect, Actions, ofType} from '@ngrx/effects';
 import {ArticleService} from 'src/app/shared/services/article.service';
 import {articleActions} from 'src/app/features/components/article/store/article.actions';
 import {catchError, map, of, switchMap, tap} from 'rxjs';
-import {HttpErrorResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
 
 export const articleEffect = createEffect(
@@ -15,7 +14,7 @@ export const articleEffect = createEffect(
                     map((article) =>
                         articleActions.loadArticleSuccess(article)
                     ),
-                    catchError((errors: HttpErrorResponse) => {
+                    catchError(() => {
                         return of(articleActions.loadArticleFailure());
                     })
                 );
@@ -34,7 +33,7 @@ export const deleteArticleEffect = createEffect(
             switchMap(({slug}) => {
                 return articleService.deleteArticle(slug).pipe(
                     map(() => articleActions.deleteArticleSuccsess()),
-                    catchError((errors: HttpErrorResponse) => {
+                    catchError(() => {
                         return of(articleActions.deleteArticleFaulure());
                     })
                 );

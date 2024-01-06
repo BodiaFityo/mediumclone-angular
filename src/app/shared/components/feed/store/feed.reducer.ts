@@ -24,7 +24,7 @@ const feedFeature = createFeature({
             isLoading: false,
             error: null,
         })),
-        on(feedActions.getFeedFailure, (state, error) => ({
+        on(feedActions.getFeedFailure, (state) => ({
             ...state,
             isLoading: false,
         })),

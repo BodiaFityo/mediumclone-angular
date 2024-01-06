@@ -4,7 +4,7 @@ import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AuthFacade} from '../../auth.facade';
 import {RegisterUserRequest} from '../../models/register-request.model';
 import {RouterLink} from '@angular/router';
-import {combineLatest, map, Observable} from 'rxjs';
+import {combineLatest, map} from 'rxjs';
 import {ErrorMessagesComponent} from 'src/app/shared/components/error-messages/error-messages.component';
 
 @Component({

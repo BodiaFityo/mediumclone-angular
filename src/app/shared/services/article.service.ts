@@ -15,7 +15,7 @@ export class ArticleService {
         return this.http.get<ArticleResponse>(url);
     }
 
-    deleteArticle(slug: string): Observable<{}> {
+    deleteArticle(slug: string): Observable<NonNullable<unknown>> {
         const url = environment.apiUrl + `/articles/${slug}`;
         return this.http.delete(url);
     }

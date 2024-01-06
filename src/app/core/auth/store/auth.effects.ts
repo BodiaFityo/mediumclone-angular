@@ -1,5 +1,5 @@
 import {HttpErrorResponse} from '@angular/common/http';
-import {inject, Injectable} from '@angular/core';
+import {inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, map, of, switchMap, tap} from 'rxjs';
@@ -94,9 +94,7 @@ export const getCurrentUserEffect = createEffect(
                 }
                 return authService.getCurrentUser().pipe(
                     map((user) => authActions.getCurrentUserSuccess(user)),
-                    catchError((errors: HttpErrorResponse) =>
-                        of(authActions.getCUrrentUserFailure())
-                    )
+                    catchError(() => of(authActions.getCUrrentUserFailure()))
                 );
             })
         );
