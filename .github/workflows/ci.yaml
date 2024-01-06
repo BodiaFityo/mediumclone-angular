@@ -33,10 +33,6 @@ jobs:
               run: npm run format
             - name: NPM build Angular Production
               run: npm run build:prod
-            # - name: Test
-            #   run: npm run test:ci
-            # - name: Test coverage
-            #   run: npm run test:ci:cov
 
     deploy:
         runs-on: ubuntu-latest
@@ -45,6 +41,7 @@ jobs:
             - name: Debug Directory Structure
               run: |
                   ls -R /home/runner/work/mediumclone-angular/mediumclone-angular
+
             - name: Deploy to my EC2 instance
               uses: easingthemes/ssh-deploy@main
               with:
