@@ -40,7 +40,7 @@ jobs:
   uses: easingthemes/ssh-deploy@v2.1.5
   with:
     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY}}
-    SOURCE: "dist/mediumclone-angular/"
+    SOURCE: "dist/mediumclone_angular/"
     REMOTE_HOST: "ec2-remote-host"
     REMOTE_USER: "ubuntu"
     TARGET: "/var/www/html/mediumclone-angular/"
