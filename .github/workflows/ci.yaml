@@ -43,7 +43,7 @@ jobs:
         needs: build
         steps:
             - name: Deploy to my EC2 instance
-              uses: easingthemes/ssh-deploy@v2.1.5
+              uses: easingthemes/ssh-deploy@v2.2.0
               with:
                   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
                   SOURCE: 'dist/mediumclone_angular/'
