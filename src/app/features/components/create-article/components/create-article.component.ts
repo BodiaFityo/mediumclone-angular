@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ArticleFormComponent} from 'src/app/shared/components/article-form/components/article-form.component';
 import {ArticleForm} from 'src/app/shared/components/article-form/models/article-form.model';
 import {ArticleRequest} from 'src/app/shared/models/article-request.model';
-import {CreateArticleFacade} from '../create-article-facade';
+import {CreateArticleFacade} from '../create-article.facade';
 import {combineLatest, map} from 'rxjs';
 import {BackEndErrors} from 'src/app/shared/models/back-end-errors.model';
 

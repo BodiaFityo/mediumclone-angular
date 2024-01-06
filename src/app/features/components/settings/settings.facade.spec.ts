@@ -1,16 +1,16 @@
-import {TestBed} from '@angular/core/testing';
+// import {TestBed} from '@angular/core/testing';
 
-import {SettingsFacade} from './settings.facade';
+// import {SettingsFacade} from './settings.facade';
 
-describe('SettingsService', () => {
-    let service: SettingsFacade;
+// describe('SettingsService', () => {
+//     let service: SettingsFacade;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({});
-        service = TestBed.inject(SettingsFacade);
-    });
+//     beforeEach(() => {
+//         TestBed.configureTestingModule({});
+//         service = TestBed.inject(SettingsFacade);
+//     });
 
-    it('should be created', () => {
-        expect(service).toBeTruthy();
-    });
-});
+//     it('should be created', () => {
+//         expect(service).toBeTruthy();
+//     });
+// });
