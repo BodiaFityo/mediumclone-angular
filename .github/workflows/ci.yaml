@@ -47,6 +47,8 @@ jobs:
         needs: build
         steps:
             - name: Deploy to my EC2 instance
+              run: |
+                  scp -r -i ${{ secrets.SSH_PRIVATE_KEY }} ./dist/mediumclone_angular ubuntu@ec2-13-48-56-99.eu-north-1.compute.amazonaws.com:/var/www/html/mediumclone-angular
               uses: easingthemes/ssh-deploy@main
               with:
                   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
