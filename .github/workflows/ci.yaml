@@ -39,7 +39,7 @@ jobs:
             # - name: Test coverage
             #   run: npm run test:ci:cov
             - name: Deploy to my EC2 instance
-              uses: easingthemes/ssh-deploy@main
+              uses: easingthemes/ssh-deploy@release
               with:
                   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
                   SOURCE: 'dist/'
