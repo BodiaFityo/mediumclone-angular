@@ -1,9 +1,11 @@
 name: CI
+
 on:
     push:
         branches: [main]
     pull_request:
         branches: [main]
+
 jobs:
     build:
         # using Ubuntu
@@ -16,14 +18,14 @@ jobs:
             - uses: actions/setup-node@v3
               with:
                   node-version: '20.x'
-            - uses: actions/cache@v3 # this allows for re-using node_modules caching, making builds a bit faster.
+            - uses: actions/cache@v3
               with:
                   path: ~/.npm
                   key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
                   restore-keys: |
                       ${{ runner.os }}-node-
             - name: NPM Install
-              run: npm install
+              run: npm install --force --legacy-peer-deps
             - name: NPM Install Angular
               run: npm install -g @angular/cli > /dev/null
             - name: NPM build Angular Production
